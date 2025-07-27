@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- parameter *input-openapi* instead of *input-yaml* (the latter is kept for backward compatibility)
+
 ## [2.0.0] - 2025-07-27
 
 ### Fixed

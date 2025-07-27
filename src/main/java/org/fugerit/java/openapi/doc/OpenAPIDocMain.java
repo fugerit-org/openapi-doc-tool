@@ -33,7 +33,9 @@ public class OpenAPIDocMain {
 
     public static final String ARG_EXCLUDE_SCHEMAS = "exclude-schemas";
 
-    public static final String ARG_INPUT_YAML = "input-yaml";
+    public static final String ARG_INPUT_OPENAPI = "input-openapi";
+
+    public static final String ARG_INPUT_YAML = "input-yaml"; // alias to 'input-openapi' for backward compatibility
 
     public static final String ARG_OUTPUT_FILE = "output-file";
 
@@ -92,12 +94,12 @@ public class OpenAPIDocMain {
 
     private static void handleSingleMode(Properties props) throws ConfigException {
         ConfigException.apply(() -> {
-            String inputYaml = props.getProperty(ARG_INPUT_YAML);
+            String inputOpenapi = props.getProperty(ARG_INPUT_OPENAPI, props.getProperty(ARG_INPUT_YAML));
             String outputPath = props.getProperty(ARG_OUTPUT_FILE);
-            if (StringUtils.isEmpty(inputYaml) || StringUtils.isEmpty(outputPath)) {
-                throw new ConfigException("Required params : " + ARG_INPUT_YAML + ", " + ARG_OUTPUT_FILE);
+            if (StringUtils.isEmpty(inputOpenapi) || StringUtils.isEmpty(outputPath)) {
+                throw new ConfigException("Required params : " + ARG_INPUT_OPENAPI + ", " + ARG_OUTPUT_FILE);
             } else {
-                File inputFile = new File(inputYaml);
+                File inputFile = new File(inputOpenapi);
                 File outputFile = new File(outputPath);
                 String fileName = outputFile.getName();
                 String outputFormat = fileName.substring(fileName.lastIndexOf('.') + 1);

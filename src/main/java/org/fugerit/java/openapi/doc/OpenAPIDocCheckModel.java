@@ -99,12 +99,13 @@ public class OpenAPIDocCheckModel {
     @SuppressWarnings("unchecked")
     public static int handleModelCheck(Properties props) throws ConfigException {
         SimpleValue<Integer> res = new SimpleValue<>(Result.RESULT_CODE_OK);
-        String inputYaml = props.getProperty(OpenAPIDocMain.ARG_INPUT_YAML);
+        String inputOpenapi = props.getProperty(OpenAPIDocMain.ARG_INPUT_OPENAPI,
+                props.getProperty(OpenAPIDocMain.ARG_INPUT_YAML));
         String checkType = props.getProperty(ARG_CHECK_TYPE);
         String checkSchema = props.getProperty(ARG_CHECK_SCHEMA);
         String outputFile = props.getProperty(OpenAPIDocMain.ARG_OUTPUT_FILE);
-        if (StringUtils.isEmpty(inputYaml)) {
-            throw new ConfigException(MISSING_REQUIRED + OpenAPIDocMain.ARG_INPUT_YAML);
+        if (StringUtils.isEmpty(inputOpenapi)) {
+            throw new ConfigException(MISSING_REQUIRED + OpenAPIDocMain.ARG_INPUT_OPENAPI);
         }
         if (StringUtils.isEmpty(checkType)) {
             throw new ConfigException(MISSING_REQUIRED + ARG_CHECK_TYPE);
@@ -113,7 +114,7 @@ public class OpenAPIDocCheckModel {
             throw new ConfigException(MISSING_REQUIRED + ARG_CHECK_SCHEMA);
         }
         ConfigException.apply(() -> {
-            try (Reader reader = new FileReader(new File(inputYaml));
+            try (Reader reader = new FileReader(new File(inputOpenapi));
                     StringWriter buffer = new StringWriter();
                     PrintWriter report = new PrintWriter(buffer)) {
                 report.println("# comparison ");

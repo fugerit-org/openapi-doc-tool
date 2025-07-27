@@ -18,7 +18,7 @@ public class TestOpenAPIDocCheckModel {
     @Test
     public void testOk() throws ConfigException {
         Properties params = new Properties();
-        params.setProperty(OpenAPIDocMain.ARG_INPUT_YAML, "src/test/resources/sample/sample.yaml");
+        params.setProperty(OpenAPIDocMain.ARG_INPUT_OPENAPI, "src/test/resources/sample/sample.yaml");
         params.setProperty(OpenAPIDocCheckModel.ARG_CHECK_SCHEMA, SampleResult.class.getSimpleName());
         params.setProperty(OpenAPIDocCheckModel.ARG_CHECK_TYPE, SampleResult.class.getName());
         params.setProperty(OpenAPIDocMain.ARG_OUTPUT_FILE, "target/report.md");
@@ -29,7 +29,7 @@ public class TestOpenAPIDocCheckModel {
     @Test
     public void testKo() throws ConfigException {
         Properties params = new Properties();
-        params.setProperty(OpenAPIDocMain.ARG_INPUT_YAML, "src/test/resources/sample/sample_check1.yaml");
+        params.setProperty(OpenAPIDocMain.ARG_INPUT_OPENAPI, "src/test/resources/sample/sample_check1.yaml");
         params.setProperty(OpenAPIDocCheckModel.ARG_CHECK_SCHEMA, SampleResult.class.getSimpleName());
         params.setProperty(OpenAPIDocCheckModel.ARG_CHECK_TYPE, SampleResult.class.getName());
         params.setProperty(OpenAPIDocCheckModel.ARG_CHECK_ONCE, BooleanUtils.BOOLEAN_TRUE);
@@ -41,7 +41,7 @@ public class TestOpenAPIDocCheckModel {
     @Test
     public void testKo2() throws ConfigException {
         Properties params = new Properties();
-        params.setProperty(OpenAPIDocMain.ARG_INPUT_YAML, "src/test/resources/sample/sample_check2.yaml");
+        params.setProperty(OpenAPIDocMain.ARG_INPUT_OPENAPI, "src/test/resources/sample/sample_check2.yaml");
         params.setProperty(OpenAPIDocCheckModel.ARG_CHECK_SCHEMA, SampleResult.class.getSimpleName());
         params.setProperty(OpenAPIDocCheckModel.ARG_CHECK_TYPE, SampleResult.class.getName());
         params.setProperty(OpenAPIDocCheckModel.ARG_CHECK_ONCE, BooleanUtils.BOOLEAN_TRUE);
@@ -69,7 +69,7 @@ public class TestOpenAPIDocCheckModel {
     public void testMain() {
         String[] args = {
                 ArgUtils.getArgString(OpenAPIDocMain.ARG_MODE), OpenAPIDocMain.ARG_MODE_CHECK_MODEL,
-                ArgUtils.getArgString(OpenAPIDocMain.ARG_INPUT_YAML), "src/test/resources/sample/sample.yaml",
+                ArgUtils.getArgString(OpenAPIDocMain.ARG_INPUT_OPENAPI), "src/test/resources/sample/sample.yaml",
                 ArgUtils.getArgString(OpenAPIDocCheckModel.ARG_CHECK_SCHEMA), SampleResult.class.getSimpleName(),
                 ArgUtils.getArgString(OpenAPIDocCheckModel.ARG_CHECK_TYPE), SampleResult.class.getName(),
         };
