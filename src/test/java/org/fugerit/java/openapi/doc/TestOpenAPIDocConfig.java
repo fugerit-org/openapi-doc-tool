@@ -15,7 +15,7 @@ public class TestOpenAPIDocConfig {
 
     private static final String FILE_ENCODING = "utf-8";
 
-    private static final String CONFIG_FILE = "src/test/resources/yaml-doc-config.xml";
+    private static final String CONFIG_FILE = "src/test/resources/openapi-doc-config.xml";
 
     private static final String ID_CATALOG = "sample";
 

@@ -1,4 +1,4 @@
-<yaml-doc-config>
+<openapi-doc-config>
 
 	<openapi-catalog id="sample">
 		<openapi id="sample_01"
@@ -47,4 +47,4 @@
 		/>
 	</openapi-catalog>
 
-</yaml-doc-config>
+</openapi-doc-config>
