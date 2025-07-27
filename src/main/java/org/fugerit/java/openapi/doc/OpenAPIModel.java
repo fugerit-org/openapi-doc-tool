@@ -1,19 +1,19 @@
-package org.fugerit.java.yaml.doc;
+package org.fugerit.java.openapi.doc;
 
 import java.util.Map;
 import java.util.Properties;
 
-public class YamlModel {
+public class OpenAPIModel {
 
-    public static final String ATT_NAME = "yamlModel";
+    public static final String ATT_NAME = "openapiModel";
 
-    private YamlDocConfig config;
+    private OpenAPIDocConfig config;
 
-    public YamlDocConfig getConfig() {
+    public OpenAPIDocConfig getConfig() {
         return config;
     }
 
-    public void setConfig(YamlDocConfig config) {
+    public void setConfig(OpenAPIDocConfig config) {
         this.config = config;
     }
 

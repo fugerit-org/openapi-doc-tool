@@ -1,4 +1,4 @@
-package org.fugerit.java.yaml.doc;
+package org.fugerit.java.openapi.doc;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,17 +17,17 @@ import org.fugerit.java.core.lang.helpers.StringUtils;
 import org.fugerit.java.core.util.PropsIO;
 import org.fugerit.java.core.util.collection.ListMapStringKey;
 import org.fugerit.java.doc.base.typehelper.excel.ExcelHelperConsts;
-import org.fugerit.java.yaml.doc.config.OpenapiConfig;
-import org.fugerit.java.yaml.doc.config.YamlDocCatalog;
+import org.fugerit.java.openapi.doc.config.OpenapiConfig;
+import org.fugerit.java.openapi.doc.config.OpenAPIDocCatalog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class YamlDocMain {
+public class OpenAPIDocMain {
 
-    private YamlDocMain() {
+    private OpenAPIDocMain() {
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(YamlDocMain.class);
+    private static final Logger logger = LoggerFactory.getLogger(OpenAPIDocMain.class);
 
     public static final String ARG_EXCLUDE_PATHS = "exclude-paths";
 
@@ -63,7 +63,7 @@ public class YamlDocMain {
         }
     }
 
-    private static void setup(YamlDocConfig config, Properties props) throws IOException {
+    private static void setup(OpenAPIDocConfig config, Properties props) throws IOException {
         String language = props.getProperty(ARG_LANGUAGE);
         String labelOverride = props.getProperty(ARG_LABEL_OVVERRIDE);
         String excludePaths = props.getProperty(ARG_EXCLUDE_PATHS);
@@ -103,11 +103,11 @@ public class YamlDocMain {
                 String outputFormat = fileName.substring(fileName.lastIndexOf('.') + 1);
                 try (Reader reader = new FileReader(inputFile);
                         FileOutputStream fos = new FileOutputStream(outputFile)) {
-                    YamlDocConfig config = new YamlDocConfig(outputFormat);
+                    OpenAPIDocConfig config = new OpenAPIDocConfig(outputFormat);
                     setup(config, props);
                     config.setExcelTryAutoresize(BooleanUtils.isTrue(
                             props.getProperty(ARG_EXCEL_TRY_AUTORESIZE, ExcelHelperConsts.PROP_XLS_TRY_AUTORESIZE_DEFAULT)));
-                    YamlDocFacade facade = new YamlDocFacade();
+                    OpenAPIDocFacade facade = new OpenAPIDocFacade();
                     facade.handle(reader, fos, config);
                 }
             }
@@ -122,24 +122,24 @@ public class YamlDocMain {
                 throw new ConfigException("Required params : " + ARG_CONFIG_PATH + ", " + ARG_ID_CATALOG);
             } else {
                 logger.info("configPath:{}, idCatalog:{}", configPath, idCatalog);
-                YamlDocCatalog config = new YamlDocCatalog();
+                OpenAPIDocCatalog config = new OpenAPIDocCatalog();
                 try (FileInputStream fis = new FileInputStream(new File(configPath))) {
-                    config = (YamlDocCatalog) GenericListCatalogConfig.load(fis, config);
+                    config = (OpenAPIDocCatalog) GenericListCatalogConfig.load(fis, config);
                     logger.info("keys : {}", config.getIdSet());
                     ListMapStringKey<OpenapiConfig> catalog = config.getListMap(idCatalog);
                     for (OpenapiConfig current : catalog) {
                         Properties propsCurrent = new Properties();
-                        addIfNotEmpty(propsCurrent, YamlDocMain.ARG_INPUT_YAML, current.getInputYaml());
-                        addIfNotEmpty(propsCurrent, YamlDocMain.ARG_OUTPUT_FILE, current.getOutputFile());
-                        addIfNotEmpty(propsCurrent, YamlDocMain.ARG_LANGUAGE, current.getLanguage());
-                        addIfNotEmpty(propsCurrent, YamlDocMain.ARG_LABEL_OVVERRIDE, current.getLabelsOverride());
-                        addIfNotEmpty(propsCurrent, YamlDocMain.ARG_EXCEL_TRY_AUTORESIZE, current.getExcelTryAutoresize());
-                        addIfNotEmpty(propsCurrent, YamlDocMain.ARG_EXCLUDE_PATHS, current.getExcludePaths());
-                        addIfNotEmpty(propsCurrent, YamlDocMain.ARG_EXCLUDE_SCHEMAS, current.getExcludeSchemas());
-                        addIfNotEmpty(propsCurrent, YamlDocMain.ARG_USE_OPENAPI_TITLE, current.getUseOpenapiTitle());
-                        addIfNotEmpty(propsCurrent, YamlDocMain.ARG_VERSION, current.getVersion());
+                        addIfNotEmpty(propsCurrent, OpenAPIDocMain.ARG_INPUT_YAML, current.getInputYaml());
+                        addIfNotEmpty(propsCurrent, OpenAPIDocMain.ARG_OUTPUT_FILE, current.getOutputFile());
+                        addIfNotEmpty(propsCurrent, OpenAPIDocMain.ARG_LANGUAGE, current.getLanguage());
+                        addIfNotEmpty(propsCurrent, OpenAPIDocMain.ARG_LABEL_OVVERRIDE, current.getLabelsOverride());
+                        addIfNotEmpty(propsCurrent, OpenAPIDocMain.ARG_EXCEL_TRY_AUTORESIZE, current.getExcelTryAutoresize());
+                        addIfNotEmpty(propsCurrent, OpenAPIDocMain.ARG_EXCLUDE_PATHS, current.getExcludePaths());
+                        addIfNotEmpty(propsCurrent, OpenAPIDocMain.ARG_EXCLUDE_SCHEMAS, current.getExcludeSchemas());
+                        addIfNotEmpty(propsCurrent, OpenAPIDocMain.ARG_USE_OPENAPI_TITLE, current.getUseOpenapiTitle());
+                        addIfNotEmpty(propsCurrent, OpenAPIDocMain.ARG_VERSION, current.getVersion());
                         logger.info("using parameters -> {}", props);
-                        YamlDocMain.worker(propsCurrent);
+                        OpenAPIDocMain.worker(propsCurrent);
                     }
                 }
             }
@@ -151,7 +151,7 @@ public class YamlDocMain {
         if (ARG_MODE_SINGLE.equalsIgnoreCase(mode)) {
             handleSingleMode(props);
         } else if (ARG_MODE_CHECK_MODEL.equalsIgnoreCase(mode)) {
-            YamlDocCheckModel.handleModelCheck(props);
+            OpenAPIDocCheckModel.handleModelCheck(props);
         } else {
             handleMultiMode(props);
         }

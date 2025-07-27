@@ -1,4 +1,4 @@
-package test.org.fugerit.java.yaml.doc;
+package org.fugerit.java.openapi.doc;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -10,16 +10,14 @@ import java.util.Locale;
 import org.fugerit.java.core.function.SafeFunction;
 import org.fugerit.java.core.util.PropsIO;
 import org.fugerit.java.doc.base.config.DocConfig;
-import org.fugerit.java.yaml.doc.YamlDocConfig;
-import org.fugerit.java.yaml.doc.YamlDocFacade;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TestYamlDocFacade {
+public class TestOpenAPIDocFacade {
 
-    private final static Logger logger = LoggerFactory.getLogger(TestYamlDocFacade.class);
+    private final static Logger logger = LoggerFactory.getLogger(TestOpenAPIDocFacade.class);
 
     private static final Locale LOCALE_EN = Locale.ENGLISH;
 
@@ -35,11 +33,11 @@ public class TestYamlDocFacade {
                 try (Reader reader = new FileReader("src/test/resources/sample/sample.yaml");
                         OutputStream os = new FileOutputStream(
                                 new File("target/sample_facade_" + locale + "." + outputFormat))) {
-                    YamlDocConfig config = new YamlDocConfig(outputFormat);
+                    OpenAPIDocConfig config = new OpenAPIDocConfig(outputFormat);
                     config.setLocale(locale);
                     config.setLabelsOverride(PropsIO.loadFromClassLoader("sample/sample-label-override.properties"));
                     config.setExcelTryAutoresize(true);
-                    YamlDocFacade facade = new YamlDocFacade();
+                    OpenAPIDocFacade facade = new OpenAPIDocFacade();
                     int result = facade.handle(reader, os, config);
                     logger.info("result -> {}", result);
                     ok = true;

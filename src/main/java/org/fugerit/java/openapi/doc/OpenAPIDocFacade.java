@@ -1,4 +1,4 @@
-package org.fugerit.java.yaml.doc;
+package org.fugerit.java.openapi.doc;
 
 import java.io.OutputStream;
 import java.io.Reader;
@@ -15,13 +15,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 
-public class YamlDocFacade {
+public class OpenAPIDocFacade {
 
-    private static final Logger logger = LoggerFactory.getLogger(YamlDocFacade.class);
+    private static final Logger logger = LoggerFactory.getLogger(OpenAPIDocFacade.class);
 
     private static final String BUNDLE_LABEL_PATH = "lang.label";
 
-    public static final String CHAIN_ID_YAML_DOC_TEMPLATE = "yaml-doc-template";
+    public static final String CHAIN_ID_YAML_DOC_TEMPLATE = "openapi-doc-template";
 
     private static final FreemarkerDocProcessConfig INSTANCE = FreemarkerDocProcessConfigFacade
             .loadConfigSafe("cl://doc-facade/fm-process-config-yaml.xml");
@@ -29,7 +29,7 @@ public class YamlDocFacade {
     private static final boolean VALIDATE_DOC_XML = false;
 
     @SuppressWarnings("unchecked")
-    public int handle(Reader inputYaml, OutputStream outputData, YamlDocConfig config) throws Exception {
+    public int handle(Reader inputYaml, OutputStream outputData, OpenAPIDocConfig config) throws Exception {
         int result = Result.RESULT_CODE_OK;
         // yaml parsing
         Yaml yaml = new Yaml();
@@ -46,14 +46,14 @@ public class YamlDocFacade {
         }
         labels.putAll(config.getLabelsOverride());
         // build model
-        YamlModel yamlModel = new YamlModel();
-        yamlModel.setPaths(paths);
-        yamlModel.setSchemas(schemas);
-        yamlModel.setLabels(labels);
-        yamlModel.setConfig(config);
+        OpenAPIModel openAPIModel = new OpenAPIModel();
+        openAPIModel.setPaths(paths);
+        openAPIModel.setSchemas(schemas);
+        openAPIModel.setLabels(labels);
+        openAPIModel.setConfig(config);
         // generation
         logger.info("docFacade -> {} (validate) {}", INSTANCE, VALIDATE_DOC_XML);
-        DocProcessContext context = DocProcessContext.newContext(YamlModel.ATT_NAME, yamlModel);
+        DocProcessContext context = DocProcessContext.newContext(OpenAPIModel.ATT_NAME, openAPIModel);
         INSTANCE.process(CHAIN_ID_YAML_DOC_TEMPLATE, config.getOutputFormat(), context, outputData, VALIDATE_DOC_XML);
         return result;
     }

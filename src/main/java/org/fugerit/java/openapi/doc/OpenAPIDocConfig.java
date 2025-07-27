@@ -1,15 +1,15 @@
-package org.fugerit.java.yaml.doc;
+package org.fugerit.java.openapi.doc;
 
 import java.util.Locale;
 import java.util.Properties;
 
-public class YamlDocConfig {
+public class OpenAPIDocConfig {
 
     public static final Integer VERSION_0 = 0;
     public static final Integer VERSION_1 = 1;
     public static final Integer VERSION_DEFAULT = VERSION_1; // default version is last version
 
-    public YamlDocConfig() {
+    public OpenAPIDocConfig() {
         this.locale = Locale.getDefault();
         if (this.locale == null) {
             this.locale = Locale.ENGLISH;
@@ -30,7 +30,7 @@ public class YamlDocConfig {
         this.outputFormat = outputFormat;
     }
 
-    public YamlDocConfig(String outputFormat) {
+    public OpenAPIDocConfig(String outputFormat) {
         this();
         this.outputFormat = outputFormat;
     }

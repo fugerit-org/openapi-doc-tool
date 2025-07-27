@@ -21,7 +21,7 @@
 		<chainStep stepType="config">
 			<config
 				id="QUICKSTART_CONFIG"
-				class="org.fugerit.java.yaml.doc.YamlDocConfig"
+				class="org.fugerit.java.openapi.doc.OpenAPIDocConfig"
 				exception-handler="RETHROW_HANDLER"
 				fallback-on-null-loop-variable="false"
 				log-exception="false"
@@ -33,16 +33,16 @@
 		</chainStep>
 		<chainStep stepType="function">
 			<function name="messageFormat" value="org.fugerit.java.doc.freemarker.fun.SimpleMessageFun"/>
-			<function name="printExample" value="org.fugerit.java.yaml.doc.fun.PrintExampleFun"/>
+			<function name="printExample" value="org.fugerit.java.openapi.doc.fun.PrintExampleFun"/>
 			<function name="sumLong" value="org.fugerit.java.doc.freemarker.fun.SimpleSumLongFun"/>
 		</chainStep>
 	</docChain>
 
-	<docChain id="yaml-doc-template" parent="config">
+	<docChain id="openapi-doc-template" parent="config">
 		<chainStep stepType="map">
-			<map name="yamlModel" value="yamlModel"/>
+			<map name="openapiModel" value="openapiModel"/>
 		</chainStep>
-		<chainStep stepType="complex" template-path="yaml-doc-template.ftl">
+		<chainStep stepType="complex" template-path="openapi-doc-template.ftl">
 		</chainStep>
 	</docChain>
 

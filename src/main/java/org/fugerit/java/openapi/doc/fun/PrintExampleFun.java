@@ -1,4 +1,4 @@
-package org.fugerit.java.yaml.doc.fun;
+package org.fugerit.java.openapi.doc.fun;
 
 import java.util.List;
 

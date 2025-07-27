@@ -1,9 +1,9 @@
-package test.org.fugerit.java.yaml.doc.fun;
+package org.fugerit.java.openapi.doc.fun;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.fugerit.java.yaml.doc.fun.PrintExampleFun;
+import org.fugerit.java.openapi.doc.fun.PrintExampleFun;
 import org.junit.Assert;
 import org.junit.Test;
 

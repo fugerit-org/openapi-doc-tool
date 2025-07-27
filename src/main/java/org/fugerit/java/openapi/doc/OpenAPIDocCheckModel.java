@@ -1,4 +1,4 @@
-package org.fugerit.java.yaml.doc;
+package org.fugerit.java.openapi.doc;
 
 import java.io.File;
 import java.io.FileReader;
@@ -24,7 +24,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class YamlDocCheckModel {
+public class OpenAPIDocCheckModel {
 
     public static final String ARG_CHECK_TYPE = "check-type";
 
@@ -34,7 +34,7 @@ public class YamlDocCheckModel {
 
     public static final String ARG_CHECK_ONCE = "check-once";
 
-    private YamlDocCheckModel() {
+    private OpenAPIDocCheckModel() {
     }
 
     @SuppressWarnings("unchecked")
@@ -99,12 +99,12 @@ public class YamlDocCheckModel {
     @SuppressWarnings("unchecked")
     public static int handleModelCheck(Properties props) throws ConfigException {
         SimpleValue<Integer> res = new SimpleValue<>(Result.RESULT_CODE_OK);
-        String inputYaml = props.getProperty(YamlDocMain.ARG_INPUT_YAML);
+        String inputYaml = props.getProperty(OpenAPIDocMain.ARG_INPUT_YAML);
         String checkType = props.getProperty(ARG_CHECK_TYPE);
         String checkSchema = props.getProperty(ARG_CHECK_SCHEMA);
-        String outputFile = props.getProperty(YamlDocMain.ARG_OUTPUT_FILE);
+        String outputFile = props.getProperty(OpenAPIDocMain.ARG_OUTPUT_FILE);
         if (StringUtils.isEmpty(inputYaml)) {
-            throw new ConfigException(MISSING_REQUIRED + YamlDocMain.ARG_INPUT_YAML);
+            throw new ConfigException(MISSING_REQUIRED + OpenAPIDocMain.ARG_INPUT_YAML);
         }
         if (StringUtils.isEmpty(checkType)) {
             throw new ConfigException(MISSING_REQUIRED + ARG_CHECK_TYPE);

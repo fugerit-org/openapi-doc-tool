@@ -1,4 +1,4 @@
-package org.fugerit.java.yaml.doc.config;
+package org.fugerit.java.openapi.doc.config;
 
 import org.fugerit.java.core.cfg.xml.BasicIdConfigType;
 

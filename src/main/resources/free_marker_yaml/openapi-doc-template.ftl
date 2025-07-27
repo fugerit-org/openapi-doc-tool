@@ -1,4 +1,4 @@
-<#import "yaml-doc-macro.ftl" as docMacro>
+<#import "openapi-doc-macro.ftl" as docMacro>
 <?xml version="1.0" encoding="utf-8"?>
 <doc
 	xmlns="http://javacoredoc.fugerit.org"
@@ -11,7 +11,7 @@
   			(In case check FreeMarker documentation https://freemarker.apache.org/docs/index.html)
    -->
 
-  <#assign labels=yamlModel.labels>
+  <#assign labels=openapiModel.labels>
 
   <meta>
   
@@ -19,18 +19,18 @@
 	<info name="doc-title">${messageFormat(labels['doc.def.title'])}</info>
 	<info name="doc-author">${messageFormat(labels['doc.def.author'])}</info>
 	<info name="doc-subject">${messageFormat(labels['doc.def.subject'])}</info>
-	<info name="doc-creator">Fugerit - Yaml Doc Tool (model version : ${yamlModel.config.version})</info>
-	<info name="doc-language">${yamlModel.config.languageCode}</info>		  	
+	<info name="doc-creator">Fugerit - Yaml Doc Tool (model version : ${openapiModel.config.version})</info>
+	<info name="doc-language">${openapiModel.config.languageCode}</info>		  	
   
   	<!-- specific properties for PDF -->
   	<info name="margins">10;10;10;10</info>
   	<info name="page-width">29.7cm</info>
   	<info name="page-height">21cm</info>
-  	<info name="excel-try-autoresize">${yamlModel.config.excelTryAutoresize?c}</info>
+  	<info name="excel-try-autoresize">${openapiModel.config.excelTryAutoresize?c}</info>
   	
   	<!-- specific properties for XLSX -->
   	<#assign excelTableId=''>
-  	<#list yamlModel.schemas?keys as currentSchemaKey>
+  	<#list openapiModel.schemas?keys as currentSchemaKey>
   		<#if currentSchemaKey?index != 0>
   			<#assign excelTableId>${excelTableId};</#assign>
   		</#if>
@@ -40,7 +40,7 @@
 	<info name="excel-width-multiplier">900</info> 
   	
  	<bookmark-tree>
- 		<#list yamlModel.schemas?keys as currentSchemaKey>
+ 		<#list openapiModel.schemas?keys as currentSchemaKey>
  			 <bookmark ref="${currentSchemaKey}">${currentSchemaKey}</bookmark>
  		</#list>
     </bookmark-tree>
@@ -51,13 +51,13 @@
   	
   		<h head-level="1" style="bold" size="16" space-after="20">${messageFormat(labels['doc.def.title'])}</h>
   
-  		<#if (yamlModel.paths)?? >
-  		<#if (!yamlModel.config.excludePaths) >
+  		<#if (openapiModel.paths)?? >
+  		<#if (!openapiModel.config.excludePaths) >
   			<h space-after="20" head-level="2" style="bold" size="16">${messageFormat(labels['title.path.list'])}</h>
   			<list>
-  			<#list yamlModel.paths?keys as currentPathKey>
-  				<#assign currentPathValue=yamlModel.paths[currentPathKey]>
-  				<li><para>${currentPathKey}<#if (yamlModel.paths[currentPathKey]['description']??)> - ${yamlModel.paths[currentPathKey]['description']}</#if></para>
+  			<#list openapiModel.paths?keys as currentPathKey>
+  				<#assign currentPathValue=openapiModel.paths[currentPathKey]>
+  				<li><para>${currentPathKey}<#if (openapiModel.paths[currentPathKey]['description']??)> - ${openapiModel.paths[currentPathKey]['description']}</#if></para>
   					<list list-type="ulm">
   						<#list currentPathValue?keys as currentMethod>
   							<#if (currentMethod != 'description' ) >
@@ -72,12 +72,12 @@
   		</#if>
   		</#if>
 
-  		<#if (yamlModel.schemas)?? >
-  		<#if (!yamlModel.config.excludeSchemas) >
+  		<#if (openapiModel.schemas)?? >
+  		<#if (!openapiModel.config.excludeSchemas) >
 	  		<h space-before="20" space-after="20" head-level="2" style="bold" size="16">${messageFormat(labels['title.schema.list'])}</h>
-			<#list yamlModel.schemas?keys as currentSchemaKey>
+			<#list openapiModel.schemas?keys as currentSchemaKey>
 				<h id="${currentSchemaKey}" head-level="3" style="bold" size="14" space-before="20">${messageFormat(labels['title.schema.current'])} : ${currentSchemaKey}</h>
-				<#assign currentSchemaValue=yamlModel.schemas[currentSchemaKey]>
+				<#assign currentSchemaValue=openapiModel.schemas[currentSchemaKey]>
 				<table id="table_${currentSchemaKey}" columns="4" colwidths="30;30;20;20"  width="100" padding="2">
 					<#if (currentSchemaValue['description'])?? >
 						<row>
@@ -104,13 +104,13 @@
 									<cell colspan="3"><para>${listAllOf['type']}</para></cell>
 								</row>
 								<#if (listAllOf['properties'])?? >
-									<@docMacro.printProperties propsMap=listAllOf['properties'] labelMap=labels version=yamlModel.config.version/>
+									<@docMacro.printProperties propsMap=listAllOf['properties'] labelMap=labels version=openapiModel.config.version/>
 								</#if>
 							</#if>
 						</#list>
 					</#if>
 					<#if (currentSchemaValue['properties'])?? >
-						<@docMacro.printProperties propsMap=currentSchemaValue['properties'] labelMap=labels version=yamlModel.config.version/>
+						<@docMacro.printProperties propsMap=currentSchemaValue['properties'] labelMap=labels version=openapiModel.config.version/>
 					</#if>
 		    	</table>
 			</#list> 
