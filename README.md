@@ -45,7 +45,7 @@ path to alternate labels properties
 currently supported labels are available in : src/main/resources/lang/label.properties
 
 **maven plugin**  
-A [Maven Plugin](https://github.com/fugerit-org/yaml-doc-maven-plugin) is also available.
+A [Maven Plugin](https://github.com/fugerit-org/openapi-doc-maven-plugin) is also available.
 
 
 ## Quickstart (mode: config):
