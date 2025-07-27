@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.fugerit.java</groupId>
-	<artifactId>open-doc-tool</artifactId>
+	<artifactId>openapi-doc-tool</artifactId>
 
 	<parent>
 		<groupId>org.fugerit.java.universe</groupId>
