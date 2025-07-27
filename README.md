@@ -69,7 +69,7 @@ Node : the type to check need to be in classpath.
 
 ```
 java -jar dist-openapi-doc-tool-*.jar 		--mode [check-model] \
-										--input-yaml [path-to-openapi] \
+										--input-openapi [path-to-openapi] \
 										--output-file [output-file] \
 										--check-type [java type to check] \
 										--check-schema [openapi schema to check]
