@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2025-07-27
+
 ### Changed
 
 - refactor project yaml-doc-tool into openapi-doc-tool <https://github.com/fugerit-org/openapi-doc-tool/issues/1>
