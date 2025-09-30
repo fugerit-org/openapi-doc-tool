@@ -86,3 +86,11 @@ components:
         - 2
         - 3
       type: string
+    SampleFailDescriptionFormat:
+      properties:
+        note:
+          type: string
+          format: date
+          example: '2024-01-01'
+          # this will lead to an error TODO: must fix
+          description: 2024-01-01

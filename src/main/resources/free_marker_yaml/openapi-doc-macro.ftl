@@ -30,7 +30,7 @@
 		    			<cell><para></para></cell>
 					</#if>		 
 					<cell><para>${printExample(currentFieldValue['example'])}</para></cell>
-					<cell><para>${currentFieldValue['description']!''}<#if (currentFieldValue['deprecated']!false)> (${messageFormat(labelMap['table.field.deprecated'])})</#if><@printAdditionalProperties currentFieldValue=currentFieldValue labelMap=labelMap version=version/></para></cell>
+					<cell><para><#if (currentFieldValue['description'])??><#attempt>${currentFieldValue['description']}<#recover>Error on description for : ${currentFieldKey}</#attempt></#if><#if (currentFieldValue['deprecated']!false)> (${messageFormat(labelMap['table.field.deprecated'])})</#if><@printAdditionalProperties currentFieldValue=currentFieldValue labelMap=labelMap version=version/></para></cell>
 		    		</row>	    		
 	    		</#list>
 </#macro>
