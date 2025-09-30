@@ -79,12 +79,6 @@
 				<h id="${currentSchemaKey}" head-level="3" style="bold" size="14" space-before="20">${messageFormat(labels['title.schema.current'])} : ${currentSchemaKey}</h>
 				<#assign currentSchemaValue=openapiModel.schemas[currentSchemaKey]>
 				<table id="table_${currentSchemaKey}" columns="4" colwidths="30;30;20;20"  width="100" padding="2">
-					<#if (currentSchemaValue['description'])?? >
-						<row>
-							<cell><para style="bold">${messageFormat(labels['table.field.description'])}</para></cell>
-							<cell colspan="3"><para>${currentSchemaValue['description']}</para></cell>
-						</row>
-					</#if>
 					<#if (currentSchemaValue['$ref'])?? >
 						<row>
 							<cell><para style="bold">${messageFormat(labels['type.extends'])}</para></cell>
@@ -97,6 +91,15 @@
 							<cell colspan="3"><para>
 									<#list currentSchemaValue['enum'] as currentEnumValue><#if currentEnumValue?index != 0>, </#if>${currentEnumValue}</#list>
 								</para></cell>
+						</row>
+					</#if>
+					<#if (currentSchemaValue['type'])?? && (currentSchemaValue['type']) != 'object' && (currentSchemaValue['type']) != 'array' >
+						<#assign customTypeMap = { currentSchemaKey : currentSchemaValue } />
+						<@docMacro.printProperties propsMap=customTypeMap labelMap=labels version=openapiModel.config.version/>
+					<#elseif (currentSchemaValue['description'])?? >
+						<row>
+							<cell><para style="bold">${messageFormat(labels['table.field.description'])}</para></cell>
+							<cell colspan="3"><para>${currentSchemaValue['description']}</para></cell>
 						</row>
 					</#if>
 					<#if (currentSchemaValue['allOf'])?? >

@@ -94,3 +94,8 @@ components:
           example: '2024-01-01'
           # this will lead to an error TODO: must fix
           description: 2024-01-01
+    SampleLocalDate:
+      format: date
+      type: string
+      example: 2022-03-10
+      description: 'My custom local date'
