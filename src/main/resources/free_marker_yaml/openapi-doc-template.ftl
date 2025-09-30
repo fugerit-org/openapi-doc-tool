@@ -91,6 +91,14 @@
 							<cell colspan="3"><para>${currentSchemaValue['$ref']}</para></cell>
 						</row>
 					</#if>
+					<#if (currentSchemaValue['enum'])?? >
+						<row>
+							<cell><para style="bold">Enum<#if (currentSchemaValue['type'])?? > (${currentSchemaValue['type']})</#if></para></cell>
+							<cell colspan="3"><para>
+									<#list currentSchemaValue['enum'] as currentEnumValue><#if currentEnumValue?index != 0>, </#if>${currentEnumValue}</#list>
+								</para></cell>
+						</row>
+					</#if>
 					<#if (currentSchemaValue['allOf'])?? >
 						<#list currentSchemaValue['allOf'] as listAllOf>
 							<#if (listAllOf['$ref'])?? >

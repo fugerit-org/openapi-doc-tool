@@ -80,4 +80,9 @@ components:
           type: string
           example: 'Level two notes E'
           description: 'Level two description'
-          
+    SampleEnum1:
+      enum:
+        - 1
+        - 2
+        - 3
+      type: string
