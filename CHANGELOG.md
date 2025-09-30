@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- handling enum
+
+### Fixed
+
+- failure on enum
+- failure on description as date (i.e. descrption: 2024-01-01 instead of descrption: '2024-01-01')
+
 ### Changed
 
 - parameter *input-openapi* instead of *input-yaml* (the latter is kept for backward compatibility)
