@@ -35,17 +35,17 @@ components:
           type: string
           example: 'Sample text'
           description: 'Sample properties'
-        sampleLevelTwoA:
-          $ref: '#/components/schemas/SampleLevelTwoA'
-        sampleLevelTwoB:
-          $ref: '#/components/schemas/SampleLevelTwoB'
+        MyVeryLongSchemaNameExceedingLimit:
+          $ref: '#/components/schemas/MyVeryLongSchemaNameExceedingLimit'
+        MyVeryLongSchemaNameExceedingLimitV2:
+          $ref: '#/components/schemas/MyVeryLongSchemaNameExceedingLimitV2'
         sampleLevelTwoC:
           $ref: '#/components/schemas/SampleLevelTwoC'
         sampleLevelTwoD:
           $ref: '#/components/schemas/SampleLevelTwoD'
         sampleLevelTwoE:
           $ref: '#/components/schemas/SampleLevelTwoE'
-    SampleLevelTwoA:
+    MyVeryLongSchemaNameExceedingLimit:
       properties:
         note:
           type: string
@@ -59,7 +59,7 @@ components:
           description: 'Level two count'
           minimum: 0
           maximum: 99999
-    SampleLevelTwoB:
+    MyVeryLongSchemaNameExceedingLimitV2:
       properties:
         note:
           type: string
@@ -94,7 +94,7 @@ components:
           description: Test list 1
           type: array
           items:
-            $ref: '#/components/schemas/SampleLevelTwoA'
+            $ref: '#/components/schemas/MyVeryLongSchemaNameExceedingLimit'
         testList2:
           description: Test list 3
           type: array
@@ -105,4 +105,4 @@ components:
           description: Test list 3
           type: array
           items:
-            $ref: '#/components/schemas/SampleLevelTwoB'
+            $ref: '#/components/schemas/MyVeryLongSchemaNameExceedingLimitV2'

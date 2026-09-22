@@ -24,11 +24,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-10-06T19:43:41.743004107Z[GMT]")
 
-public class SampleLevelTwoB {
+public class MyVeryLongSchemaNameExceedingLimitV2 {
     @SerializedName("note")
     private String note = null;
 
-    public SampleLevelTwoB note(String note) {
+    public MyVeryLongSchemaNameExceedingLimitV2 note(String note) {
         this.note = note;
         return this;
     }
@@ -55,7 +55,7 @@ public class SampleLevelTwoB {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        SampleLevelTwoB sampleLevelTwoB = (SampleLevelTwoB) o;
+        MyVeryLongSchemaNameExceedingLimitV2 sampleLevelTwoB = (MyVeryLongSchemaNameExceedingLimitV2) o;
         return Objects.equals(this.note, sampleLevelTwoB.note);
     }
 

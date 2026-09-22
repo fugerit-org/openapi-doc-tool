@@ -34,7 +34,7 @@
   		<#if currentSchemaKey?index != 0>
   			<#assign excelTableId>${excelTableId};</#assign>
   		</#if>
-  		<#assign excelTableId>${excelTableId}table_${currentSchemaKey}=${currentSchemaKey}</#assign>
+  		<#assign excelTableId>${excelTableId}table_${currentSchemaKey}=${1+currentSchemaKey?index} ${currentSchemaKey}</#assign>
  	</#list>
    	<info name="excel-table-id">${excelTableId}</info>
 	<info name="excel-width-multiplier">900</info> 
