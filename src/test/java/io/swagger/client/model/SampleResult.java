@@ -31,11 +31,11 @@ public class SampleResult {
     @SerializedName("sampleTest")
     private String sampleTest = null;
 
-    @SerializedName("sampleLevelTwoA")
-    private SampleLevelTwoA sampleLevelTwoA = null;
+    @SerializedName("myVeryLongSchemaNameExceedingLimit")
+    private MyVeryLongSchemaNameExceedingLimit MyVeryLongSchemaNameExceedingLimit = null;
 
-    @SerializedName("sampleLevelTwoB")
-    private SampleLevelTwoB sampleLevelTwoB = null;
+    @SerializedName("myVeryLongSchemaNameExceedingLimitV2")
+    private MyVeryLongSchemaNameExceedingLimitV2 MyVeryLongSchemaNameExceedingLimitV2 = null;
 
     @SerializedName("sampleLevelTwoC")
     private SampleLevelTwoC sampleLevelTwoC = null;
@@ -87,42 +87,45 @@ public class SampleResult {
         this.sampleTest = sampleTest;
     }
 
-    public SampleResult sampleLevelTwoA(SampleLevelTwoA sampleLevelTwoA) {
-        this.sampleLevelTwoA = sampleLevelTwoA;
+    public SampleResult MyVeryLongSchemaNameExceedingLimit(
+            MyVeryLongSchemaNameExceedingLimit MyVeryLongSchemaNameExceedingLimit) {
+        this.MyVeryLongSchemaNameExceedingLimit = MyVeryLongSchemaNameExceedingLimit;
         return this;
     }
 
     /**
-     * Get sampleLevelTwoA
+     * Get MyVeryLongSchemaNameExceedingLimit
      *
-     * @return sampleLevelTwoA
+     * @return MyVeryLongSchemaNameExceedingLimit
      **/
     @Schema(description = "")
-    public SampleLevelTwoA getSampleLevelTwoA() {
-        return sampleLevelTwoA;
+    public MyVeryLongSchemaNameExceedingLimit getMyVeryLongSchemaNameExceedingLimit() {
+        return MyVeryLongSchemaNameExceedingLimit;
     }
 
-    public void setSampleLevelTwoA(SampleLevelTwoA sampleLevelTwoA) {
-        this.sampleLevelTwoA = sampleLevelTwoA;
+    public void setMyVeryLongSchemaNameExceedingLimit(MyVeryLongSchemaNameExceedingLimit MyVeryLongSchemaNameExceedingLimit) {
+        this.MyVeryLongSchemaNameExceedingLimit = MyVeryLongSchemaNameExceedingLimit;
     }
 
-    public SampleResult sampleLevelTwoB(SampleLevelTwoB sampleLevelTwoB) {
-        this.sampleLevelTwoB = sampleLevelTwoB;
+    public SampleResult MyVeryLongSchemaNameExceedingLimitV2(
+            MyVeryLongSchemaNameExceedingLimitV2 MyVeryLongSchemaNameExceedingLimitV2) {
+        this.MyVeryLongSchemaNameExceedingLimitV2 = MyVeryLongSchemaNameExceedingLimitV2;
         return this;
     }
 
     /**
-     * Get sampleLevelTwoB
+     * Get MyVeryLongSchemaNameExceedingLimitV2
      *
-     * @return sampleLevelTwoB
+     * @return MyVeryLongSchemaNameExceedingLimitV2
      **/
     @Schema(description = "")
-    public SampleLevelTwoB getSampleLevelTwoB() {
-        return sampleLevelTwoB;
+    public MyVeryLongSchemaNameExceedingLimitV2 getMyVeryLongSchemaNameExceedingLimitV2() {
+        return MyVeryLongSchemaNameExceedingLimitV2;
     }
 
-    public void setSampleLevelTwoB(SampleLevelTwoB sampleLevelTwoB) {
-        this.sampleLevelTwoB = sampleLevelTwoB;
+    public void setMyVeryLongSchemaNameExceedingLimitV2(
+            MyVeryLongSchemaNameExceedingLimitV2 MyVeryLongSchemaNameExceedingLimitV2) {
+        this.MyVeryLongSchemaNameExceedingLimitV2 = MyVeryLongSchemaNameExceedingLimitV2;
     }
 
     public SampleResult sampleLevelTwoC(SampleLevelTwoC sampleLevelTwoC) {
@@ -211,8 +214,8 @@ public class SampleResult {
         }
         SampleResult sampleResult = (SampleResult) o;
         return Objects.equals(this.id, sampleResult.id) && Objects.equals(this.sampleTest, sampleResult.sampleTest)
-                && Objects.equals(this.sampleLevelTwoA, sampleResult.sampleLevelTwoA)
-                && Objects.equals(this.sampleLevelTwoB, sampleResult.sampleLevelTwoB)
+                && Objects.equals(this.MyVeryLongSchemaNameExceedingLimit, sampleResult.MyVeryLongSchemaNameExceedingLimit)
+                && Objects.equals(this.MyVeryLongSchemaNameExceedingLimitV2, sampleResult.MyVeryLongSchemaNameExceedingLimitV2)
                 && Objects.equals(this.sampleLevelTwoC, sampleResult.sampleLevelTwoC)
                 && Objects.equals(this.sampleLevelTwoD, sampleResult.sampleLevelTwoD)
                 && Objects.equals(this.sampleLevelTwoE, sampleResult.sampleLevelTwoE);
@@ -220,7 +223,8 @@ public class SampleResult {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, sampleTest, sampleLevelTwoA, sampleLevelTwoB, sampleLevelTwoC, sampleLevelTwoD,
+        return Objects.hash(id, sampleTest, MyVeryLongSchemaNameExceedingLimit, MyVeryLongSchemaNameExceedingLimitV2,
+                sampleLevelTwoC, sampleLevelTwoD,
                 sampleLevelTwoE);
     }
 
@@ -231,8 +235,10 @@ public class SampleResult {
 
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    sampleTest: ").append(toIndentedString(sampleTest)).append("\n");
-        sb.append("    sampleLevelTwoA: ").append(toIndentedString(sampleLevelTwoA)).append("\n");
-        sb.append("    sampleLevelTwoB: ").append(toIndentedString(sampleLevelTwoB)).append("\n");
+        sb.append("    MyVeryLongSchemaNameExceedingLimit: ").append(toIndentedString(MyVeryLongSchemaNameExceedingLimit))
+                .append("\n");
+        sb.append("    MyVeryLongSchemaNameExceedingLimitV2: ").append(toIndentedString(MyVeryLongSchemaNameExceedingLimitV2))
+                .append("\n");
         sb.append("    sampleLevelTwoC: ").append(toIndentedString(sampleLevelTwoC)).append("\n");
         sb.append("    sampleLevelTwoD: ").append(toIndentedString(sampleLevelTwoD)).append("\n");
         sb.append("    sampleLevelTwoE: ").append(toIndentedString(sampleLevelTwoE)).append("\n");

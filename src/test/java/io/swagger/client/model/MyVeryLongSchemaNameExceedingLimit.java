@@ -22,14 +22,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * SampleLevelTwoA
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-11-30T10:47:05.392595294Z[GMT]")
-public class SampleLevelTwoA {
+public class MyVeryLongSchemaNameExceedingLimit {
     @SerializedName("note")
     private String note = null;
 
     @SerializedName("count")
     private String count = null;
 
-    public SampleLevelTwoA note(String note) {
+    public MyVeryLongSchemaNameExceedingLimit note(String note) {
         this.note = note;
         return this;
     }
@@ -48,7 +48,7 @@ public class SampleLevelTwoA {
         this.note = note;
     }
 
-    public SampleLevelTwoA count(String count) {
+    public MyVeryLongSchemaNameExceedingLimit count(String count) {
         this.count = count;
         return this;
     }
@@ -75,7 +75,7 @@ public class SampleLevelTwoA {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        SampleLevelTwoA sampleLevelTwoA = (SampleLevelTwoA) o;
+        MyVeryLongSchemaNameExceedingLimit sampleLevelTwoA = (MyVeryLongSchemaNameExceedingLimit) o;
         return Objects.equals(this.note, sampleLevelTwoA.note) &&
                 Objects.equals(this.count, sampleLevelTwoA.count);
     }
