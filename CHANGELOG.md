@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.2] - 2026-09-22
+
+### Fixed
+
+- fix: XLSX generation fails with IllegalArgumentException when schema names exceed 31 characters and share a common prefix <https://github.com/fugerit-org/openapi-doc-tool/issues/2>
+
 ## [2.1.1] - 2025-09-30
 
 ### Fixed
